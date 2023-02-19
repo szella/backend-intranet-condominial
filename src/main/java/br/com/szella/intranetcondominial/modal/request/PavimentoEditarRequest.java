@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class PavimentoEditarRequest {
     private Integer pavimento;
-    private String nome;
     private String descricao;
 }

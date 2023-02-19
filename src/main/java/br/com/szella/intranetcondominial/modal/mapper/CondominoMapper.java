@@ -15,14 +15,12 @@ public class CondominoMapper {
         return CondominoEntity.builder()
                 .nome(request.getNome())
                 .documento(request.getDocumento())
-                .proprietario(request.isProprietario())
                 .build();
     }
 
     public static void mapAtualizacao(CondominoEditarRequest novo, CondominoEntity atual) {
         atual.setNome(novo.getNome());
         atual.setDocumento(novo.getDocumento());
-        atual.setProprietario(novo.isProprietario());
     }
 
     public static CondominoResponse mapResponse(CondominoEntity entity) {
@@ -30,7 +28,6 @@ public class CondominoMapper {
                 .id(entity.getId())
                 .nome(entity.getNome())
                 .documento(entity.getDocumento())
-                .proprietario(entity.isProprietario())
                 .build();
     }
 

@@ -32,9 +32,6 @@ public class CondominoEntity {
 
     private String documento;
 
-    @Column(nullable = false)
-    private boolean proprietario;
-
     @OneToMany(
             mappedBy = "condomino",
             cascade = CascadeType.ALL,

@@ -1,6 +1,6 @@
 package br.com.szella.intranetcondominial.service.impl;
 
-import br.com.szella.intranetcondominial.enums.MensagemDeErro;
+import br.com.szella.intranetcondominial.enums.MensagemDeErroEnum;
 import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.PredioEntity;
 import br.com.szella.intranetcondominial.modal.mapper.PredioMapper;
@@ -22,7 +22,11 @@ public class PredioServiceImpl implements PredioService {
 
     @Override
     public List<PredioEntity> listar() {
-        return repository.findAll();
+        try {
+            return repository.findAll();
+        } catch (Exception e) {
+            throw new DBException(MensagemDeErroEnum.LISTAR.getMensagem());
+        }
     }
 
     @Override
@@ -31,25 +35,38 @@ public class PredioServiceImpl implements PredioService {
                 .of(repository.findById(id))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .orElseThrow(() -> new DBException(MensagemDeErro.NAO_ENCONTRADO.getMensagem()));
+                .orElseThrow(() -> new DBException(MensagemDeErroEnum.NAO_ENCONTRADO.getMensagem()));
     }
 
     @Override
     public PredioEntity salvar(PredioSalvarRequest request) {
-        return repository.save(PredioMapper.mapEntity(request));
+        try {
+            return repository.save(PredioMapper.mapEntity(request));
+        } catch (Exception e) {
+            throw new DBException(MensagemDeErroEnum.SALVAR.getMensagem());
+        }
     }
 
     @Override
     public PredioEntity editar(Long id, PredioEditarRequest request) {
-        var entity = buscarPorId(id);
+        try {
+            var entity = buscarPorId(id);
 
-        PredioMapper.mapAtualizacao(request, entity);
-        repository.save(entity);
-        return entity;
+            PredioMapper.mapAtualizacao(request, entity);
+
+            repository.save(entity);
+            return entity;
+        } catch (Exception e) {
+            throw new DBException(MensagemDeErroEnum.EDITAR.getMensagem());
+        }
     }
 
     @Override
     public void deletar(Long id) {
-        repository.delete(buscarPorId(id));
+        try {
+            repository.delete(buscarPorId(id));
+        } catch (Exception e) {
+            throw new DBException(MensagemDeErroEnum.DELETAR.getMensagem());
+        }
     }
 }

@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Unidade")
+@RequestMapping("/unidades")
 @AllArgsConstructor
 public class UnidadeController {
     private final UnidadeService service;

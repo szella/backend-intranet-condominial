@@ -31,9 +31,6 @@ public class PavimentoEntity {
     @Column(nullable = false)
     private Integer pavimento;
 
-    @Column(nullable = false)
-    private String nome;
-
     private String descricao;
 
     @ManyToOne

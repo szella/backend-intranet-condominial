@@ -14,14 +14,12 @@ public class PavimentoMapper {
     public static PavimentoEntity mapEntity(PavimentoSalvarRequest request) {
         return PavimentoEntity.builder()
                 .pavimento(request.getPavimento())
-                .nome(request.getNome())
                 .descricao(request.getDescricao())
                 .build();
     }
 
     public static void mapAtualizacao(PavimentoEditarRequest novo, PavimentoEntity atual) {
         atual.setPavimento(novo.getPavimento());
-        atual.setNome(novo.getNome());
         atual.setDescricao(novo.getDescricao());
     }
 
@@ -29,7 +27,6 @@ public class PavimentoMapper {
         return PavimentoResponse.builder()
                 .id(entity.getId())
                 .pavimento(entity.getPavimento())
-                .nome(entity.getNome())
                 .descricao(entity.getDescricao())
                 .build();
     }

@@ -6,5 +6,4 @@ import lombok.Data;
 public class CondominoSalvarRequest {
     private String nome;
     private String documento;
-    private boolean proprietario;
 }

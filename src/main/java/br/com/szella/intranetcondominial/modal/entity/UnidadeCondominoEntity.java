@@ -1,7 +1,10 @@
 package br.com.szella.intranetcondominial.modal.entity;
 
+import br.com.szella.intranetcondominial.enums.TipoCondominoEnum;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -37,4 +40,7 @@ public class UnidadeCondominoEntity {
     private LocalDateTime entrada;
 
     private LocalDateTime saida;
+
+    @Enumerated(EnumType.STRING)
+    private TipoCondominoEnum tipoCondomino;
 }
