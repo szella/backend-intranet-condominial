@@ -4,7 +4,7 @@ import br.com.szella.intranetcondominial.modal.mapper.CondominoMapper;
 import br.com.szella.intranetcondominial.modal.request.CondominoEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.CondominoSalvarRequest;
 import br.com.szella.intranetcondominial.modal.response.CondominoResponse;
-import br.com.szella.intranetcondominial.modal.service.CondominoService;
+import br.com.szella.intranetcondominial.service.CondominoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

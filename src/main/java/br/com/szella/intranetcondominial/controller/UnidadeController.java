@@ -4,7 +4,7 @@ import br.com.szella.intranetcondominial.modal.mapper.UnidadeMapper;
 import br.com.szella.intranetcondominial.modal.request.UnidadeEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
 import br.com.szella.intranetcondominial.modal.response.UnidadeResponse;
-import br.com.szella.intranetcondominial.modal.service.UnidadeService;
+import br.com.szella.intranetcondominial.service.UnidadeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

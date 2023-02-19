@@ -4,7 +4,7 @@ import br.com.szella.intranetcondominial.modal.mapper.AndarMapper;
 import br.com.szella.intranetcondominial.modal.request.AndarEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.AndarSalvarRequest;
 import br.com.szella.intranetcondominial.modal.response.AndarResponse;
-import br.com.szella.intranetcondominial.modal.service.AndarService;
+import br.com.szella.intranetcondominial.service.AndarService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

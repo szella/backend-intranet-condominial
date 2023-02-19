@@ -1,4 +1,4 @@
-package br.com.szella.intranetcondominial.modal.service.impl;
+package br.com.szella.intranetcondominial.service.impl;
 
 import br.com.szella.intranetcondominial.enums.MensagemDeErro;
 import br.com.szella.intranetcondominial.exception.DBException;
@@ -7,7 +7,7 @@ import br.com.szella.intranetcondominial.modal.mapper.AndarMapper;
 import br.com.szella.intranetcondominial.modal.repository.AndarRepository;
 import br.com.szella.intranetcondominial.modal.request.AndarEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.AndarSalvarRequest;
-import br.com.szella.intranetcondominial.modal.service.AndarService;
+import br.com.szella.intranetcondominial.service.AndarService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

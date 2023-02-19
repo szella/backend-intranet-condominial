@@ -4,7 +4,7 @@ import br.com.szella.intranetcondominial.modal.mapper.PredioMapper;
 import br.com.szella.intranetcondominial.modal.request.PredioEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.PredioSalvarRequest;
 import br.com.szella.intranetcondominial.modal.response.PredioResponse;
-import br.com.szella.intranetcondominial.modal.service.PredioService;
+import br.com.szella.intranetcondominial.service.PredioService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

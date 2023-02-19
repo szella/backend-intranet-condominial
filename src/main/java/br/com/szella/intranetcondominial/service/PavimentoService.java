@@ -1,4 +1,4 @@
-package br.com.szella.intranetcondominial.modal.service;
+package br.com.szella.intranetcondominial.service;
 
 import br.com.szella.intranetcondominial.modal.entity.PavimentoEntity;
 import br.com.szella.intranetcondominial.modal.request.PavimentoEditarRequest;
