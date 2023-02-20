@@ -3,6 +3,7 @@ package br.com.szella.intranetcondominial.modal.mapper;
 import br.com.szella.intranetcondominial.modal.entity.UnidadeEntity;
 import br.com.szella.intranetcondominial.modal.request.UnidadeEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
+import br.com.szella.intranetcondominial.modal.response.UnidadeComCondominosResponse;
 import br.com.szella.intranetcondominial.modal.response.UnidadeResponse;
 import lombok.experimental.UtilityClass;
 
@@ -21,6 +22,20 @@ public class UnidadeMapper {
     public static void mapAtualizacao(UnidadeEditarRequest novo, UnidadeEntity atual) {
         atual.setNome(novo.getNome());
         atual.setDescricao(novo.getDescricao());
+    }
+
+    public static UnidadeComCondominosResponse mapComCondominosResponse(UnidadeEntity entity) {
+        return UnidadeComCondominosResponse.builder()
+                .id(entity.getId())
+                .nome(entity.getNome())
+                .descricao(entity.getDescricao())
+                .condominos(CondominoMapper
+                        .mapListaResponse(entity
+                                .getCondominos()
+                                .stream()
+                                .map(condomino -> condomino.getCondomino())
+                                .collect(Collectors.toList())))
+                .build();
     }
 
     public static UnidadeResponse mapResponse(UnidadeEntity entity) {

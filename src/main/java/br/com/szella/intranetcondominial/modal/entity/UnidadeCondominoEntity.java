@@ -15,8 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Builder
@@ -27,7 +25,7 @@ import java.time.LocalDateTime;
 public class UnidadeCondominoEntity {
 
     @EmbeddedId
-    private UnidadeCondominoId unidadeCondominoId;
+    private UnidadeCondominoId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("unidadeId")
@@ -36,10 +34,6 @@ public class UnidadeCondominoEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("codominoId")
     private CondominoEntity condomino;
-
-    private LocalDateTime entrada;
-
-    private LocalDateTime saida;
 
     @Enumerated(EnumType.STRING)
     private TipoCondominoEnum tipoCondomino;

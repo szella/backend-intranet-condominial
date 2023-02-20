@@ -10,7 +10,10 @@ public enum MensagemDeErroEnum {
     SALVAR("Erro ao salvar."),
     EDITAR("Erro ao editar."),
     DELETAR("Erro ao deletar."),
-    LISTAR("Erro ao listar.");
+    LISTAR("Erro ao listar."),
+    VINCULAR("Erro ao vincular."),
+    DESVINCULAR("Erro ao desvincular."),
+    EXISTE("Registro já existe");
 
     private String mensagem;
 }

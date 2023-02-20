@@ -3,6 +3,7 @@ package br.com.szella.intranetcondominial.controller;
 import br.com.szella.intranetcondominial.modal.mapper.UnidadeMapper;
 import br.com.szella.intranetcondominial.modal.request.UnidadeEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
+import br.com.szella.intranetcondominial.modal.response.UnidadeComCondominosResponse;
 import br.com.szella.intranetcondominial.modal.response.UnidadeResponse;
 import br.com.szella.intranetcondominial.service.UnidadeService;
 import lombok.AllArgsConstructor;
@@ -38,6 +39,17 @@ public class UnidadeController {
                 .ofNullable(service.buscarPorId(id))
                 .filter(Objects::nonNull)
                 .map(UnidadeMapper::mapResponse)
+                .orElse(null);
+
+        return ResponseEntity.ok(entity);
+    }
+
+    @GetMapping(value = "/{id}/com-condominos")
+    public ResponseEntity<UnidadeComCondominosResponse> buscarPorIdComCondominos(@PathVariable Long id) {
+        var entity = Optional
+                .ofNullable(service.buscarPorId(id))
+                .filter(Objects::nonNull)
+                .map(UnidadeMapper::mapComCondominosResponse)
                 .orElse(null);
 
         return ResponseEntity.ok(entity);
