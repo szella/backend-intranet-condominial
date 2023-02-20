@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -38,5 +39,5 @@ public class AndarEntity {
     private PavimentoEntity pavimento;
 
     @OneToMany(mappedBy = "andar")
-    private List<UnidadeEntity> unidades;
+    private List<UnidadeEntity> unidades = new ArrayList<>();
 }

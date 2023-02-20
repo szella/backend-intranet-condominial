@@ -18,6 +18,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalIdCache;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -48,5 +49,5 @@ public class UnidadeEntity {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<UnidadeCondominoEntity> condominos;
+    private List<UnidadeCondominoEntity> condominos = new ArrayList<>();
 }

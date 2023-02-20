@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -37,5 +38,5 @@ public class CondominoEntity {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<UnidadeCondominoEntity> unidades;
+    private List<UnidadeCondominoEntity> unidades = new ArrayList<>();
 }

@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -32,5 +33,5 @@ public class PredioEntity {
     private String descricao;
 
     @OneToMany(mappedBy = "predio")
-    private List<PavimentoEntity> pavimentos;
+    private List<PavimentoEntity> pavimentos = new ArrayList<>();
 }
