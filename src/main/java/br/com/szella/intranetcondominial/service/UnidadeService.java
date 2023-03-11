@@ -7,7 +7,7 @@ import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
 import java.util.List;
 
 public interface UnidadeService {
-    List<UnidadeEntity> listar();
+    List<UnidadeEntity> listar(Long andarId);
 
     UnidadeEntity buscarPorId(Long id);
 

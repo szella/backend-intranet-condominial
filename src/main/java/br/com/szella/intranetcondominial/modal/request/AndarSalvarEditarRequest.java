@@ -3,8 +3,9 @@ package br.com.szella.intranetcondominial.modal.request;
 import lombok.Data;
 
 @Data
-public class PavimentoSalvarRequest {
-    private Integer pavimento;
+public class AndarSalvarEditarRequest {
+    private Long id;
+    private String nome;
     private String descricao;
-    private Long predioId;
+    private Integer posicao;
 }

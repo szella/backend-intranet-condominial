@@ -33,5 +33,5 @@ public class PredioEntity {
     private String descricao;
 
     @OneToMany(mappedBy = "predio")
-    private List<PavimentoEntity> pavimentos = new ArrayList<>();
+    private List<AndarEntity> andares = new ArrayList<>();
 }

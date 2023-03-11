@@ -24,9 +24,9 @@ public class UnidadeServiceImpl implements UnidadeService {
     private AndarService andarService;
 
     @Override
-    public List<UnidadeEntity> listar() {
+    public List<UnidadeEntity> listar(Long andarId) {
         try {
-            return repository.findAll();
+            return repository.findByAndarId(andarId);
         } catch (Exception e) {
             throw new DBException(MensagemDeErroEnum.LISTAR.getMensagem());
         }

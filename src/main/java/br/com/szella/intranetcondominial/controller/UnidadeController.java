@@ -8,6 +8,7 @@ import br.com.szella.intranetcondominial.modal.response.UnidadeResponse;
 import br.com.szella.intranetcondominial.service.UnidadeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,13 +25,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/unidades")
+@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class UnidadeController {
     private final UnidadeService service;
 
     @GetMapping
-    public ResponseEntity<List<UnidadeResponse>> listar() {
-        var entities = service.listar();
+    public ResponseEntity<List<UnidadeResponse>> listar(@RequestParam(required = false) Long andarId) {
+        var entities = service.listar(andarId);
         return ResponseEntity.ok(UnidadeMapper.mapListaResponse(entities));
     }
 

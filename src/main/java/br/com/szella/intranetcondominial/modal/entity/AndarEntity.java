@@ -34,9 +34,11 @@ public class AndarEntity {
 
     private String descricao;
 
+    private Integer posicao;
+
     @ManyToOne
-    @JoinColumn(name = "pavimento_id", nullable = false)
-    private PavimentoEntity pavimento;
+    @JoinColumn(name = "predio_id", nullable = false)
+    private PredioEntity predio;
 
     @OneToMany(mappedBy = "andar")
     private List<UnidadeEntity> unidades = new ArrayList<>();

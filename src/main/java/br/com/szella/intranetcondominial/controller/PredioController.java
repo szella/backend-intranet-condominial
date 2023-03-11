@@ -7,6 +7,7 @@ import br.com.szella.intranetcondominial.modal.response.PredioResponse;
 import br.com.szella.intranetcondominial.service.PredioService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/predios")
+@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class PredioController {
     private final PredioService service;

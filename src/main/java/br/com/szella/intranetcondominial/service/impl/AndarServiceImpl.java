@@ -3,15 +3,16 @@ package br.com.szella.intranetcondominial.service.impl;
 import br.com.szella.intranetcondominial.enums.MensagemDeErroEnum;
 import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.AndarEntity;
+import br.com.szella.intranetcondominial.modal.entity.PredioEntity;
 import br.com.szella.intranetcondominial.modal.mapper.AndarMapper;
 import br.com.szella.intranetcondominial.modal.repository.AndarRepository;
-import br.com.szella.intranetcondominial.modal.request.AndarEditarRequest;
-import br.com.szella.intranetcondominial.modal.request.AndarSalvarRequest;
+import br.com.szella.intranetcondominial.modal.request.AndarSalvarEditarRequest;
 import br.com.szella.intranetcondominial.service.AndarService;
-import br.com.szella.intranetcondominial.service.PavimentoService;
+import br.com.szella.intranetcondominial.service.PredioService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +21,12 @@ import java.util.Optional;
 public class AndarServiceImpl implements AndarService {
 
     private AndarRepository repository;
-    private PavimentoService pavimentoService;
+    private PredioService predioService;
 
     @Override
-    public List<AndarEntity> listar() {
+    public List<AndarEntity> listar(Long pavimentoId) {
         try {
-            return repository.findAll();
+            return repository.findByPredioId(pavimentoId);
         } catch (Exception e) {
             throw new DBException(MensagemDeErroEnum.LISTAR.getMensagem());
         }
@@ -41,37 +42,31 @@ public class AndarServiceImpl implements AndarService {
     }
 
     @Override
-    public AndarEntity salvar(AndarSalvarRequest request) {
+    public List<AndarEntity> salvarAtualizar(Long predioId, List<AndarSalvarEditarRequest> request) {
         try {
-            var entity = AndarMapper.mapEntity(request);
-            entity.setPavimento(pavimentoService.buscarPorId(request.getPavimentoId()));
+            PredioEntity predioEntity = predioService.buscarPorId(predioId);
 
-            return repository.save(entity);
+            List<AndarEntity> listaGravacao = new ArrayList<>();
+            for (AndarSalvarEditarRequest andar : request) {
+                listaGravacao.add(AndarMapper.mapEntity(predioEntity, andar));
+            }
+
+            List<AndarEntity> listaCompleta = repository.findByPredioId(predioId);
+
+            for (AndarEntity andarRemocao : listaCompleta) {
+                Boolean manter = listaGravacao.stream()
+                        .filter(andarGravar -> andarGravar.getId().equals(andarRemocao.getId()))
+                        .findFirst().isPresent();
+                if(!manter){
+                    repository.delete(andarRemocao);
+                }
+            }
+
+            repository.saveAll(listaGravacao);
+
+            return listaGravacao;
         } catch (Exception e) {
             throw new DBException(MensagemDeErroEnum.SALVAR.getMensagem());
-        }
-    }
-
-    @Override
-    public AndarEntity editar(Long id, AndarEditarRequest request) {
-        try {
-            var entity = buscarPorId(id);
-
-            AndarMapper.mapAtualizacao(request, entity);
-
-            repository.save(entity);
-            return entity;
-        } catch (Exception e) {
-            throw new DBException(MensagemDeErroEnum.EDITAR.getMensagem());
-        }
-    }
-
-    @Override
-    public void deletar(Long id) {
-        try {
-            repository.delete(buscarPorId(id));
-        } catch (Exception e) {
-            throw new DBException(MensagemDeErroEnum.DELETAR.getMensagem());
         }
     }
 }
