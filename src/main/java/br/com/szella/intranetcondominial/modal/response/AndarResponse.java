@@ -8,6 +8,5 @@ import lombok.Data;
 public class AndarResponse {
     private Long id;
     private String nome;
-    private String descricao;
     private Integer posicao;
 }

@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/andares")
@@ -30,17 +28,6 @@ public class AndarController {
     public ResponseEntity<List<AndarResponse>> listar(@RequestParam(required = false) Long predioId) {
         var entities = service.listar(predioId);
         return ResponseEntity.ok(AndarMapper.mapListaResponse(entities));
-    }
-
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<AndarResponse> buscarPorId(@PathVariable Long id) {
-        var entity = Optional
-                .ofNullable(service.buscarPorId(id))
-                .filter(Objects::nonNull)
-                .map(AndarMapper::mapResponse)
-                .orElse(null);
-
-        return ResponseEntity.ok(entity);
     }
 
     @PostMapping("/{predioId}")

@@ -1,8 +1,7 @@
 package br.com.szella.intranetcondominial.service;
 
 import br.com.szella.intranetcondominial.modal.entity.UnidadeEntity;
-import br.com.szella.intranetcondominial.modal.request.UnidadeEditarRequest;
-import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
+import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarEditarRequest;
 
 import java.util.List;
 
@@ -11,9 +10,6 @@ public interface UnidadeService {
 
     UnidadeEntity buscarPorId(Long id);
 
-    UnidadeEntity salvar(UnidadeSalvarRequest request);
+    List<UnidadeEntity> salvarAtualizar(Long andarId, List<UnidadeSalvarEditarRequest> request);
 
-    UnidadeEntity editar(Long id, UnidadeEditarRequest request);
-
-    void deletar(Long id);
 }

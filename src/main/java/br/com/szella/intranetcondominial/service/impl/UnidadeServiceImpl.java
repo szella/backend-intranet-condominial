@@ -2,19 +2,22 @@ package br.com.szella.intranetcondominial.service.impl;
 
 import br.com.szella.intranetcondominial.enums.MensagemDeErroEnum;
 import br.com.szella.intranetcondominial.exception.DBException;
+import br.com.szella.intranetcondominial.modal.entity.AndarEntity;
 import br.com.szella.intranetcondominial.modal.entity.UnidadeEntity;
 import br.com.szella.intranetcondominial.modal.mapper.UnidadeMapper;
 import br.com.szella.intranetcondominial.modal.repository.UnidadeRepository;
-import br.com.szella.intranetcondominial.modal.request.UnidadeEditarRequest;
-import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
+import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarEditarRequest;
 import br.com.szella.intranetcondominial.service.AndarService;
 import br.com.szella.intranetcondominial.service.UnidadeService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class UnidadeServiceImpl implements UnidadeService {
@@ -42,37 +45,31 @@ public class UnidadeServiceImpl implements UnidadeService {
     }
 
     @Override
-    public UnidadeEntity salvar(UnidadeSalvarRequest request) {
+    public List<UnidadeEntity> salvarAtualizar(Long andarId, List<UnidadeSalvarEditarRequest> request) {
         try {
-            var entity = UnidadeMapper.mapEntity(request);
-            entity.setAndar(andarService.buscarPorId(request.getAndarId()));
+            AndarEntity andarEntity = andarService.buscarPorId(andarId);
 
-            return repository.save(entity);
-        } catch (Exception e) {
-            throw new DBException(MensagemDeErroEnum.SALVAR.getMensagem());
-        }
-    }
+            List<UnidadeEntity> listaGravacao = new ArrayList<>();
+            for (UnidadeSalvarEditarRequest unidade : request) {
+                listaGravacao.add(UnidadeMapper.mapEntity(andarEntity, unidade));
+            }
 
-    @Override
-    public UnidadeEntity editar(Long id, UnidadeEditarRequest request) {
-        try {
-            var entity = buscarPorId(id);
+            List<UnidadeEntity> listaCompleta = repository.findByAndarId(andarId);
 
-            UnidadeMapper.mapAtualizacao(request, entity);
+            for (UnidadeEntity undidadeRemocao : listaCompleta) {
+                Boolean manter = listaGravacao.stream()
+                        .filter(unidadeGravar -> unidadeGravar.getId().equals(undidadeRemocao.getId()))
+                        .findFirst().isPresent();
+                if (!manter) {
+                    repository.delete(undidadeRemocao);
+                }
+            }
 
-            repository.save(entity);
-            return entity;
+            repository.saveAll(listaGravacao);
+
+            return listaGravacao;
         } catch (Exception e) {
             throw new DBException(MensagemDeErroEnum.EDITAR.getMensagem());
-        }
-    }
-
-    @Override
-    public void deletar(Long id) {
-        try {
-            repository.delete(buscarPorId(id));
-        } catch (Exception e) {
-            throw new DBException(MensagemDeErroEnum.DELETAR.getMensagem());
         }
     }
 }

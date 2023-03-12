@@ -32,8 +32,6 @@ public class AndarEntity {
     @Column(nullable = false)
     private String nome;
 
-    private String descricao;
-
     private Integer posicao;
 
     @ManyToOne

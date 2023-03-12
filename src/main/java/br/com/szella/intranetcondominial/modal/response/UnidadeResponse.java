@@ -8,5 +8,5 @@ import lombok.Data;
 public class UnidadeResponse {
     private Long id;
     private String nome;
-    private String descricao;
+    private Integer posicao;
 }

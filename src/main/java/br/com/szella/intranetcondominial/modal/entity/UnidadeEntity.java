@@ -38,7 +38,7 @@ public class UnidadeEntity {
     @Column(nullable = false)
     private String nome;
 
-    private String descricao;
+    private Integer posicao;
 
     @ManyToOne
     @JoinColumn(name = "andar_id", nullable = false)
@@ -46,8 +46,7 @@ public class UnidadeEntity {
 
     @OneToMany(
             mappedBy = "unidade",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     private List<UnidadeCondominoEntity> condominos = new ArrayList<>();
 }

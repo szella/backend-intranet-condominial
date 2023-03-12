@@ -5,5 +5,4 @@ import lombok.Data;
 @Data
 public class PredioEditarRequest {
     private String nome;
-    private String descricao;
 }

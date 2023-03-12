@@ -15,7 +15,6 @@ public class AndarMapper {
         return AndarEntity.builder()
                 .id(request.getId())
                 .nome(request.getNome())
-                .descricao(request.getDescricao())
                 .predio(predio)
                 .posicao(request.getPosicao())
                 .build();
@@ -25,7 +24,6 @@ public class AndarMapper {
         return AndarResponse.builder()
                 .id(entity.getId())
                 .nome(entity.getNome())
-                .descricao(entity.getDescricao())
                 .posicao(entity.getPosicao())
                 .build();
     }

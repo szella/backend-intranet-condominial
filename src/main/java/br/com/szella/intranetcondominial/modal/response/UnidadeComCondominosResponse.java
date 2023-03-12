@@ -10,6 +10,5 @@ import java.util.List;
 public class UnidadeComCondominosResponse {
     private Long id;
     private String nome;
-    private String descricao;
     private List<CondominoResponse> condominos;
 }

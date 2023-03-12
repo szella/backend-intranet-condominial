@@ -1,9 +1,8 @@
 package br.com.szella.intranetcondominial.modal.mapper;
 
+import br.com.szella.intranetcondominial.modal.entity.AndarEntity;
 import br.com.szella.intranetcondominial.modal.entity.UnidadeEntity;
-import br.com.szella.intranetcondominial.modal.request.UnidadeEditarRequest;
-import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarRequest;
-import br.com.szella.intranetcondominial.modal.response.UnidadeComCondominosResponse;
+import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarEditarRequest;
 import br.com.szella.intranetcondominial.modal.response.UnidadeResponse;
 import lombok.experimental.UtilityClass;
 
@@ -12,29 +11,12 @@ import java.util.stream.Collectors;
 
 @UtilityClass
 public class UnidadeMapper {
-    public static UnidadeEntity mapEntity(UnidadeSalvarRequest request) {
+    public static UnidadeEntity mapEntity(AndarEntity andar, UnidadeSalvarEditarRequest request) {
         return UnidadeEntity.builder()
+                .id(request.getId())
                 .nome(request.getNome())
-                .descricao(request.getDescricao())
-                .build();
-    }
-
-    public static void mapAtualizacao(UnidadeEditarRequest novo, UnidadeEntity atual) {
-        atual.setNome(novo.getNome());
-        atual.setDescricao(novo.getDescricao());
-    }
-
-    public static UnidadeComCondominosResponse mapComCondominosResponse(UnidadeEntity entity) {
-        return UnidadeComCondominosResponse.builder()
-                .id(entity.getId())
-                .nome(entity.getNome())
-                .descricao(entity.getDescricao())
-                .condominos(CondominoMapper
-                        .mapListaResponse(entity
-                                .getCondominos()
-                                .stream()
-                                .map(condomino -> condomino.getCondomino())
-                                .collect(Collectors.toList())))
+                .andar(andar)
+                .posicao(request.getPosicao())
                 .build();
     }
 
@@ -42,7 +24,7 @@ public class UnidadeMapper {
         return UnidadeResponse.builder()
                 .id(entity.getId())
                 .nome(entity.getNome())
-                .descricao(entity.getDescricao())
+                .posicao(entity.getPosicao())
                 .build();
     }
 

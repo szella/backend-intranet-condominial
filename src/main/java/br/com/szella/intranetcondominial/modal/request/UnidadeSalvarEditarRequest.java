@@ -3,7 +3,8 @@ package br.com.szella.intranetcondominial.modal.request;
 import lombok.Data;
 
 @Data
-public class UnidadeEditarRequest {
+public class UnidadeSalvarEditarRequest {
+    private Long id;
     private String nome;
-    private String descricao;
+    private Integer posicao;
 }

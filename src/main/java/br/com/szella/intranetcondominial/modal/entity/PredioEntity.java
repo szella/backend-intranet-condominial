@@ -30,8 +30,6 @@ public class PredioEntity {
     @Column(nullable = false)
     private String nome;
 
-    private String descricao;
-
     @OneToMany(mappedBy = "predio")
     private List<AndarEntity> andares = new ArrayList<>();
 }

@@ -8,5 +8,4 @@ import lombok.Data;
 public class PredioResponse {
     private Long id;
     private String nome;
-    private String descricao;
 }

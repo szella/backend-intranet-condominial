@@ -14,20 +14,17 @@ public class PredioMapper {
     public static PredioEntity mapEntity(PredioSalvarRequest request) {
         return PredioEntity.builder()
                 .nome(request.getNome())
-                .descricao(request.getDescricao())
                 .build();
     }
 
     public static void mapAtualizacao(PredioEditarRequest novo, PredioEntity atual) {
         atual.setNome(novo.getNome());
-        atual.setDescricao(novo.getDescricao());
     }
 
     public static PredioResponse mapResponse(PredioEntity entity) {
         return PredioResponse.builder()
                 .id(entity.getId())
                 .nome(entity.getNome())
-                .descricao(entity.getDescricao())
                 .build();
     }
 

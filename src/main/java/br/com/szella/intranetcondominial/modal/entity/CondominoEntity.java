@@ -35,8 +35,7 @@ public class CondominoEntity {
 
     @OneToMany(
             mappedBy = "condomino",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     private List<UnidadeCondominoEntity> unidades = new ArrayList<>();
 }
