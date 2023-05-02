@@ -23,7 +23,6 @@ import lombok.Setter;
 @Entity(name = "UnidadeCondomino")
 @Table(name = "unidade-condomino")
 public class UnidadeCondominoEntity {
-
     @EmbeddedId
     private UnidadeCondominoId id;
 

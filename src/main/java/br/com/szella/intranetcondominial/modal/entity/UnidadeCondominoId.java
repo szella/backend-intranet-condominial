@@ -15,7 +15,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Embeddable
 public class UnidadeCondominoId implements Serializable {
-
     @Column(name = "unidade_id")
     private Long unidadeId;
 
