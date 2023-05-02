@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/predios")
+@RequestMapping("/v1/predios")
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class PredioController {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/unidades-condominos")
+@RequestMapping("/v1/unidades-condominos")
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class UnidadeCondominoController {

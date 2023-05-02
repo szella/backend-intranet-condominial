@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/andares")
+@RequestMapping("/v1/andares")
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class AndarController {

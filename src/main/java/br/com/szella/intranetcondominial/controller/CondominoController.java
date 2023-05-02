@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/condominos")
+@RequestMapping("/v1/condominos")
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class CondominoController {

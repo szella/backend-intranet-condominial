@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/locais-evento")
+@RequestMapping("/v1/locais-evento")
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class LocalEventoController {
