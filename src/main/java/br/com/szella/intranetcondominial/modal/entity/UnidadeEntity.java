@@ -44,9 +44,6 @@ public class UnidadeEntity {
     @JoinColumn(name = "andar_id", nullable = false)
     private AndarEntity andar;
 
-    @OneToMany(
-            mappedBy = "unidade",
-            cascade = CascadeType.ALL
-    )
+    @OneToMany(mappedBy = "unidade", cascade = CascadeType.ALL)
     private List<UnidadeCondominoEntity> condominos = new ArrayList<>();
 }

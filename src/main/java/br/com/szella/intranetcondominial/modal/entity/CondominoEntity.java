@@ -33,9 +33,6 @@ public class CondominoEntity {
 
     private String documento;
 
-    @OneToMany(
-            mappedBy = "condomino",
-            cascade = CascadeType.ALL
-    )
+    @OneToMany(mappedBy = "condomino", cascade = CascadeType.ALL)
     private List<UnidadeCondominoEntity> unidades = new ArrayList<>();
 }
