@@ -1,4 +1,4 @@
-package br.com.szella.intranetcondominial.modal.repository;
+package br.com.szella.intranetcondominial.repository;
 
 import br.com.szella.intranetcondominial.modal.entity.EventoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

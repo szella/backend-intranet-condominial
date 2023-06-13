@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 public class UnidadeCondominoController {
-
-    private UnidadeCondominoService service;
+    private final UnidadeCondominoService service;
 
     @PostMapping(value = "/vincular")
     public ResponseEntity<UnidadeCondominoResponse> vincular(@RequestBody UnidadeCondominoVincularResquest request) {

@@ -4,7 +4,7 @@ import br.com.szella.intranetcondominial.enums.MensagemDeErroEnum;
 import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.PredioEntity;
 import br.com.szella.intranetcondominial.modal.mapper.PredioMapper;
-import br.com.szella.intranetcondominial.modal.repository.PredioRepository;
+import br.com.szella.intranetcondominial.repository.PredioRepository;
 import br.com.szella.intranetcondominial.modal.request.PredioEditarRequest;
 import br.com.szella.intranetcondominial.modal.request.PredioSalvarRequest;
 import br.com.szella.intranetcondominial.service.PredioService;

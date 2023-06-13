@@ -1,14 +1,12 @@
 package br.com.szella.intranetcondominial.modal.entity;
 
-import br.com.szella.intranetcondominial.enums.PeriodoEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,35 +14,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "Evento")
-@Table(name = "evento")
-public class EventoEntity {
+@Entity(name = "Informativo")
+@Table(name = "informativo")
+public class InformativoEntity {
     @Id
     @GeneratedValue
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "local_evento_id", nullable = false)
-    private LocalEventoEntity localEvento;
+    @JoinColumn(name = "predio_id", nullable = false)
+    private PredioEntity predio;
 
-    @Column(nullable = false)
-    private LocalDate data;
+    private String observacao;
 
-    @Column(nullable = false)
-    private String locatario;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private PeriodoEnum periodo;
+    private Boolean leituraObrigatoria;
 
     @Column(nullable = false)
     private LocalDateTime dataInicio;
@@ -53,10 +44,9 @@ public class EventoEntity {
     private LocalDateTime dataFim;
 
     @Column(nullable = false)
-    private BigDecimal valor;
-
-    private String observacao;
-
-    @Column(nullable = false)
     private LocalDateTime dataRegistro;
+
+    @OneToMany(mappedBy = "informativo")
+    private List<InformativoLeituraEntity> confirmacaoLeitura;
+
 }

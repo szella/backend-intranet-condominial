@@ -4,7 +4,7 @@ import br.com.szella.intranetcondominial.enums.MensagemDeErroEnum;
 import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.UnidadeCondominoEntity;
 import br.com.szella.intranetcondominial.modal.entity.UnidadeCondominoId;
-import br.com.szella.intranetcondominial.modal.repository.UnidadeCondominoRepository;
+import br.com.szella.intranetcondominial.repository.UnidadeCondominoRepository;
 import br.com.szella.intranetcondominial.modal.request.UnidadeCondominoDesvincularResquest;
 import br.com.szella.intranetcondominial.modal.request.UnidadeCondominoVincularResquest;
 import br.com.szella.intranetcondominial.service.CondominoService;

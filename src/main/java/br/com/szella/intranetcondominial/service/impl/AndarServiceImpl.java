@@ -5,7 +5,7 @@ import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.AndarEntity;
 import br.com.szella.intranetcondominial.modal.entity.PredioEntity;
 import br.com.szella.intranetcondominial.modal.mapper.AndarMapper;
-import br.com.szella.intranetcondominial.modal.repository.AndarRepository;
+import br.com.szella.intranetcondominial.repository.AndarRepository;
 import br.com.szella.intranetcondominial.modal.request.AndarSalvarEditarRequest;
 import br.com.szella.intranetcondominial.service.AndarService;
 import br.com.szella.intranetcondominial.service.PredioService;

@@ -1,19 +1,7 @@
 package br.com.szella.intranetcondominial.modal.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalIdCache;
@@ -36,9 +24,7 @@ public class UnidadeEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
-
-    private Integer posicao;
+    private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "andar_id", nullable = false)

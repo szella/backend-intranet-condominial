@@ -5,7 +5,7 @@ import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.AndarEntity;
 import br.com.szella.intranetcondominial.modal.entity.UnidadeEntity;
 import br.com.szella.intranetcondominial.modal.mapper.UnidadeMapper;
-import br.com.szella.intranetcondominial.modal.repository.UnidadeRepository;
+import br.com.szella.intranetcondominial.repository.UnidadeRepository;
 import br.com.szella.intranetcondominial.modal.request.UnidadeSalvarEditarRequest;
 import br.com.szella.intranetcondominial.service.AndarService;
 import br.com.szella.intranetcondominial.service.UnidadeService;

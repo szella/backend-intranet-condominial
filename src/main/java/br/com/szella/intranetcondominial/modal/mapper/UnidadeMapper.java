@@ -14,17 +14,15 @@ public class UnidadeMapper {
     public static UnidadeEntity mapEntity(AndarEntity andar, UnidadeSalvarEditarRequest request) {
         return UnidadeEntity.builder()
                 .id(request.getId())
-                .nome(request.getNome())
+                .descricao(request.getNome())
                 .andar(andar)
-                .posicao(request.getPosicao())
                 .build();
     }
 
     public static UnidadeResponse mapResponse(UnidadeEntity entity) {
         return UnidadeResponse.builder()
                 .id(entity.getId())
-                .nome(entity.getNome())
-                .posicao(entity.getPosicao())
+                .nome(entity.getDescricao())
                 .build();
     }
 

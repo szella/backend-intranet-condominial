@@ -5,7 +5,7 @@ import br.com.szella.intranetcondominial.exception.DBException;
 import br.com.szella.intranetcondominial.modal.entity.EventoEntity;
 import br.com.szella.intranetcondominial.modal.entity.LocalEventoEntity;
 import br.com.szella.intranetcondominial.modal.mapper.EventoMapper;
-import br.com.szella.intranetcondominial.modal.repository.EventoRepository;
+import br.com.szella.intranetcondominial.repository.EventoRepository;
 import br.com.szella.intranetcondominial.modal.request.EventoSalvarEditarRequest;
 import br.com.szella.intranetcondominial.service.EventoService;
 import br.com.szella.intranetcondominial.service.LocalEventoService;

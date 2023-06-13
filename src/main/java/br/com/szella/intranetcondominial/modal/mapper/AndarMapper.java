@@ -14,7 +14,7 @@ public class AndarMapper {
     public static AndarEntity mapEntity(PredioEntity predio, AndarSalvarEditarRequest request) {
         return AndarEntity.builder()
                 .id(request.getId())
-                .nome(request.getNome())
+                .descricao(request.getNome())
                 .predio(predio)
                 .posicao(request.getPosicao())
                 .build();
@@ -23,7 +23,7 @@ public class AndarMapper {
     public static AndarResponse mapResponse(AndarEntity entity) {
         return AndarResponse.builder()
                 .id(entity.getId())
-                .nome(entity.getNome())
+                .nome(entity.getDescricao())
                 .posicao(entity.getPosicao())
                 .build();
     }

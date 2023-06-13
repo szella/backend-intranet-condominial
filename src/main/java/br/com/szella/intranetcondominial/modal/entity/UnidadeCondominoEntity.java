@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "UnidadeCondomino")
-@Table(name = "unidade-condomino")
+@Table(name = "unidade_condomino")
 public class UnidadeCondominoEntity {
     @EmbeddedId
     private UnidadeCondominoId id;
