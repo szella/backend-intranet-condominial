@@ -58,7 +58,7 @@ public class UnidadeServiceImpl implements UnidadeService {
 
             for (UnidadeEntity undidadeRemocao : listaCompleta) {
                 Boolean manter = listaGravacao.stream()
-                        .filter(unidadeGravar -> unidadeGravar.getId().equals(undidadeRemocao.getId()))
+                        .filter(unidadeGravar -> undidadeRemocao.getId().equals(unidadeGravar.getId()))
                         .findFirst().isPresent();
                 if (!manter) {
                     repository.delete(undidadeRemocao);
